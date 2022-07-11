@@ -72,7 +72,7 @@
               <manifest>
                 <addClasspath>true</addClasspath>
                 <classpathPrefix>lib/</classpathPrefix>
-                <mainClass>com.hussani.lgbtqia.App</mainClass>
+                <mainClass>com.hussani.compression.App</mainClass>
               </manifest>
             </archive>
           </configuration>
