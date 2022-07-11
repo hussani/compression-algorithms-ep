@@ -1,11 +1,15 @@
 package com.hussani.compression.huffman;
 
 import com.hussani.compression.Alphabet;
+import com.hussani.compression.Compressor;
 import com.hussani.compression.datastructure.BinaryTreeNode;
 
 import java.util.PriorityQueue;
 
-public class HuffmanDecoder {
+public class HuffmanDecoder implements Compressor {
+
+    public HuffmanDecoder() {
+    }
 
     static int[] frequency(final String input) {
         int[] frequency = new int[Alphabet.ALPHABET_SIZE];
@@ -85,14 +89,6 @@ public class HuffmanDecoder {
         return output.toString();
     }
 
-    public static String compreess(final String input) {
-        final int[] frequency = frequency(input);
-        final BinaryTreeNode tree = buildTree(frequency);
-        final String[] binaryMap = buildCodeMap(tree, input.length());
-
-        return buildTreeString(tree) + buildCodeString(input, binaryMap);
-    }
-
     static BinaryTreeNode readCodedTree(String codedTree, int[] position) {
         if (codedTree.charAt(position[0]) == "1".charAt(0)) {
             position[0]++;
@@ -116,7 +112,8 @@ public class HuffmanDecoder {
         return Alphabet.BINARY_TO_CHAR_MAP.get(buffer);
     }
 
-    public static String decompress(final String input) {
+    @Override
+    public String decompress(final String input) {
         int[] position = new int[]{0}; // hack to share position between scopes
 
         final BinaryTreeNode root = readCodedTree(input, position);
@@ -136,5 +133,14 @@ public class HuffmanDecoder {
             output.append(node.getCharacter());
         }
         return output.toString();
+    }
+
+    @Override
+    public String compress(final String input) {
+        final int[] frequency = frequency(input);
+        final BinaryTreeNode tree = buildTree(frequency);
+        final String[] binaryMap = buildCodeMap(tree, input.length());
+
+        return buildTreeString(tree) + buildCodeString(input, binaryMap);
     }
 }

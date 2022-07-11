@@ -80,7 +80,7 @@ public class Alphabet {
         if (CHAR_TO_BINARY_MAP.containsKey(character)) {
             return Integer.parseInt(CHAR_TO_BINARY_MAP.get(character), 2);
         }
-        throw new RuntimeException("Char not found");
+        throw new RuntimeException("Char not found: " + character);
     }
 
     public static char intToChar(int intKey) throws RuntimeException {
@@ -89,6 +89,6 @@ public class Alphabet {
         if (BINARY_TO_CHAR_MAP.containsKey(binaryString)) {
             return BINARY_TO_CHAR_MAP.get(binaryString);
         }
-        throw new RuntimeException("Char not found");
+        throw new RuntimeException("Char not found: " + binaryString);
     }
 }

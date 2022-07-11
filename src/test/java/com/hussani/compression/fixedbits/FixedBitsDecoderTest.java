@@ -13,13 +13,13 @@ class FixedBitsDecoderTest {
     @ParameterizedTest
     @MethodSource("inputOutputCompressProvider")
     void testCompress(final String input, final String output) {
-        assertEquals(output, FixedBitsDecoder.compress(input));
+        assertEquals(output, new FixedBitsDecoder().compress(input));
     }
 
     @ParameterizedTest
     @MethodSource("inputOutputDecompressProvider")
     void testDecompress(final String input, final String output) {
-        assertEquals(output, FixedBitsDecoder.decompress(input));
+        assertEquals(output, new FixedBitsDecoder().decompress(input));
     }
 
     public static Stream<Arguments> inputOutputCompressProvider() {

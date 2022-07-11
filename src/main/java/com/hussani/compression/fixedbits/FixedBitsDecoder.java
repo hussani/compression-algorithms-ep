@@ -1,10 +1,11 @@
 package com.hussani.compression.fixedbits;
 
 import com.hussani.compression.Alphabet;
+import com.hussani.compression.Compressor;
 
-public class FixedBitsDecoder {
+public class FixedBitsDecoder implements Compressor {
 
-    public static String compress(final String input) {
+    public String compress(final String input) {
         String output = "";
         for (int i = 0; i < input.length(); i++) {
             output = output + Alphabet.CHAR_TO_BINARY_MAP.get(input.charAt(i));
@@ -12,7 +13,7 @@ public class FixedBitsDecoder {
         return output;
     }
 
-    public static String decompress(final String input) {
+    public String decompress(final String input) {
         String output = "";
         String buffer = "";
         for (int i = 0; i < input.length(); i++) {

@@ -4,7 +4,8 @@ import com.hussani.compression.Alphabet;
 import com.hussani.compression.datastructure.BinaryTreeNode;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class HuffmanDecoderTest {
 
@@ -88,7 +89,7 @@ class HuffmanDecoderTest {
     void compressAraraquaraTest() {
         String input = "araraquara";
         String expected = "00011010011000011000110000010110110010001011";
-        String result = HuffmanDecoder.compreess(input);
+        String result = new HuffmanDecoder().compress(input);
         assertEquals(expected, result);
     }
 
@@ -104,7 +105,7 @@ class HuffmanDecoderTest {
     void decompressAraraquaraTest() {
         String expected = "araraquara";
         String input = "00011010011000011000110000010110110010001011";
-        String result = HuffmanDecoder.decompress(input);
+        String result = new HuffmanDecoder().decompress(input);
         assertEquals(expected, result);
     }
 }
